@@ -15,6 +15,7 @@ Steps to run:
 clone the repository
 
 *in terminal*
+
 cd PITSwebsite2
 
 start prototype-home.html
