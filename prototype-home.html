@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page Prototype - Professional I.T Solution</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Arial, sans-serif; 
+      background: #f5f5f5; 
+      margin: 0; 
+      color: #333; 
+      line-height: 1.6;
+    }
+    
+    .floating-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 2rem;
+    }
+    .logo {
+      height: 38px;
+      width: auto;
+      display: block;
+      margin-right: 1.2rem;
+      vertical-align: middle;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links li a:hover, .nav-links li a:focus {
+      background: #f9c846;
+      color: #222;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 38px;
+      height: 38px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1201;
+    }
+    .hamburger-bar {
+      width: 26px;
+      height: 3.5px;
+      background: #05607B;
+      margin: 3.5px 0;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+    }
+    .mobile-menu-overlay {
+      position: absolute;
+      top: 60px;
+      right: 1.2rem;
+      left: auto;
+      width: 210px;
+      height: auto;
+      background: #fff;
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: opacity 0.35s cubic-bezier(.4,2,.6,1), transform 0.35s cubic-bezier(.4,2,.6,1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 1.2rem 0.5rem;
+    }
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .mobile-nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+      width: 100%;
+      gap: 0.5rem;
+    }
+    .mobile-nav-links li {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .mobile-nav-links li a {
+      color: #05607B;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+      padding: 0.2rem 0.5rem;
+      margin: 0;
+      border-radius: 6px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .mobile-nav-links li a:hover, .mobile-nav-links li a:focus {
+      color: #f7b70b;
+      background: #f6f7fa;
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+    @media (min-width: 901px) {
+      .mobile-menu-overlay {
+        display: none !important;
+      }
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+    
+    .hero-bg-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transition: opacity 1.6s ease-in-out;
+      z-index: 1;
+    }
+    
+    .hero-bg-placeholder.active {
+      opacity: 1;
+    }
+    
+    .hero-bg-dim {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 1000px;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      color: #fff;
+      height: 100vh;
+      padding-top: 4rem;
+    }
+    
+    .hero-logo {
+      position: relative;
+      z-index: 5;
+      width: 450px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      display: block;
+      margin-top: 3rem;
+    }
+    
+    .hero-text-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 1000px;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: #fff;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #05607B;
+      border: 3px solid #f9c846;
+      padding: 2rem;
+      background: rgba(255,255,255,0.8);
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 900px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    
+    .hero-desc {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #05607B;
+      border: 2px solid #f9c846;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.8);
+      border-radius: 8px;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    
+    .hero-learnmore-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .hero-learnmore {
+      background: #f9c846;
+      color: #222;
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #f7b70b;
+      transition: all 0.2s;
+      display: inline-block;
+      min-width: 150px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .hero-learnmore:hover {
+      background: #f7b70b;
+      border-color: #05607B;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    /* Footer */
+    .site-footer {
+      background: #fff;
+      color: #333;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 2px solid #ddd;
+    }
+    
+    .footer-link {
+      color: #0066cc;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: row;
+        gap: 0;
+        padding: 0 1rem;
+        justify-content: space-between;
+      }
+      
+      .desktop-nav {
+        display: none;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .hero-content {
+        padding: 0 1rem;
+        padding-top: 2rem;
+      }
+      
+      .hero-logo {
+        width: 280px;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+        padding: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero-desc {
+        font-size: 1rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .hero-learnmore-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      
+      .hero-learnmore {
+        min-width: 200px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .nav-container {
+        padding: 0 0.5rem;
+      }
+      
+      .nav-links {
+        gap: 0.5rem;
+      }
+      
+      .nav-links li a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+      
+      .hero-content {
+        padding: 0 0.5rem;
+        padding-top: 1.5rem;
+      }
+      
+      .hero-logo {
+        width: 220px;
+        margin-bottom: 0.8rem;
+      }
+      
+      .hero-title {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero-desc {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-learnmore {
+        min-width: 180px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Business Benefits Section */
+    .benefits-section {
+      background: #f6f7fa;
+      padding: 4rem 0;
+      width: 100%;
+    }
+    
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .benefits-title {
+      font-size: 3rem;
+      color: #05607B;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .benefits-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+    
+    .benefits-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .benefit-card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-color: #f7b70b;
+    }
+    
+    .benefit-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-card-title {
+      font-size: 1.5rem;
+      color: #05607B;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-card-desc {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ROI Section */
+    .roi-section {
+      background: linear-gradient(135deg, #05607B 0%, #0a8bb3 100%);
+      padding: 4rem 0;
+      color: #fff;
+    }
+    
+    .roi-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .roi-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .roi-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+    
+    .roi-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    
+    .roi-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .roi-stat {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .roi-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #f7b70b;
+      margin-bottom: 0.5rem;
+    }
+    
+    .roi-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    
+    .roi-cta {
+      display: inline-block;
+      background: #f7b70b;
+      color: #222;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .roi-cta:hover {
+      background: #ffd700;
+      transform: translateY(-2px);
+    }
+
+    /* Success Stories Section */
+    .success-section {
+      background: #fff;
+      padding: 4rem 0;
+    }
+    
+    .success-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .success-title {
+      font-size: 3rem;
+      color: #05607B;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .success-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+    
+    .success-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+    
+    .success-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .success-card {
+      background: #f6f7fa;
+      padding: 2.5rem;
+      border-radius: 12px;
+      border-left: 4px solid #f7b70b;
+      text-align: left;
+    }
+    
+    .success-quote {
+      font-size: 1.2rem;
+      color: #333;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .success-author-name {
+      font-size: 1.1rem;
+      color: #05607B;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    
+    .success-author-title {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    /* Success Stories Slideshow */
+    .success-slider {
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    
+    .success-slide {
+      display: none;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    .success-slide.active {
+      display: block;
+    }
+    
+    .success-dots {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 8px;
+      background-color: #ddd;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .dot.active, .dot:hover {
+      background-color: #f7b70b;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { opacity: 1; transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .animate-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s ease;
+    }
+    
+    .animate-left.animated {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .animate-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s ease;
+    }
+    
+    .animate-right.animated {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .animate-scale {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.8s ease;
+    }
+    
+    .animate-scale.animated {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .animate-bounce {
+      opacity: 0;
+      transform: scale(0.3);
+      transition: all 0.8s ease;
+    }
+    
+    .animate-bounce.animated {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Call to Action Section */
+    .cta-section {
+      background: linear-gradient(135deg, #f9c846 0%, #fad675 100%);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .cta-title {
+      font-size: 3rem;
+      color: #222;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .cta-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cta-primary {
+      background: #05607B;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-primary:hover {
+      background: #0a8bb3;
+      transform: translateY(-2px);
+    }
+    
+    .cta-secondary {
+      background: transparent;
+      color: #05607B;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid #05607B;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-secondary:hover {
+      background: #05607B;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design for new sections */
+    @media (max-width: 768px) {
+      .benefits-title, .roi-title, .success-title, .cta-title {
+        font-size: 2.2rem;
+      }
+      
+      .benefits-grid, .roi-stats, .success-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta-primary, .cta-secondary {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="floating-navbar">
+      <div class="nav-container">
+        <a href="prototype-home.html" class="logo-link"><img src="assets/logo.png" alt="Professional I.T Solution Logo" class="logo"></a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="prototype-about.html">About</a></li>
+          <li><a href="prototype-services.html">Service</a></li>
+          <li><a href="prototype-team.html">Team</a></li>
+          <li><a href="prototype-contact.html">Contact</a></li>
+          <li><a href="prototype-join.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="prototype-about.html">About</a></li>
+          <li><a href="prototype-services.html">Service</a></li>
+          <li><a href="prototype-team.html">Team</a></li>
+          <li><a href="prototype-contact.html">Contact</a></li>
+          <li><a href="prototype-join.html">Join Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <section class="hero-section">
+    <!-- 1. Dedicated Advanced Team: Multiple people at a table in an office, laptops visible, no visible faces -->
+    <div class="hero-bg-placeholder active" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&h=1080&q=80')"></div>
+    <!-- 2. Service Solution Company: Consulting, business meeting, hands, laptops, no faces -->
+    <div class="hero-bg-placeholder" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920&h=1080&q=80')"></div>
+    <!-- 3. We Do Things Differently: Creative, modern workspace, no faces -->
+    <div class="hero-bg-placeholder" style="background-image:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1920&h=1080&q=80')"></div>
+    <div class="hero-bg-dim"></div>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="assets/my-image.png" alt="Professional I.T Solution Logo" style="width: 100%; height: auto;">
+      </div>
+      <div class="hero-text-content">
+        <h1 class="hero-title" id="hero-title">DEDICATED ADVANCED TEAM</h1>
+        <p class="hero-desc" id="hero-desc">Our collective insight and best practices guarantee high impact business results each time you partner with us.</p>
+        <div class="hero-learnmore-group">
+          <a href="prototype-team.html" class="hero-learnmore" id="hero-learnmore-0">Learn More</a>
+          <a href="prototype-about.html" class="hero-learnmore" id="hero-learnmore-1" style="display:none;">Learn More</a>
+          <a href="prototype-services.html" class="hero-learnmore" id="hero-learnmore-2" style="display:none;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Benefits Section -->
+  <section class="benefits-section">
+    <div class="benefits-container">
+      <h2 class="benefits-title animate-on-scroll">Why Choose Professional I.T Solution?</h2>
+      <div class="benefits-underline animate-on-scroll"></div>
+      <p class="benefits-subtitle animate-on-scroll">Transform your business with our proven expertise and innovative solutions</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card animate-left">
+          <div class="benefit-icon">💰</div>
+          <h3 class="benefit-card-title">Boost Revenue by 40%</h3>
+          <p class="benefit-card-desc">Our digital transformation solutions have helped clients increase their revenue by an average of 40% within the first year of implementation.</p>
+        </div>
+        
+        <div class="benefit-card animate-scale">
+          <div class="benefit-icon">⚡</div>
+          <h3 class="benefit-card-title">Reduce Costs by 60%</h3>
+          <p class="benefit-card-desc">Streamline operations and eliminate inefficiencies with our automation solutions, cutting operational costs by up to 60%.</p>
+        </div>
+        
+        <div class="benefit-card animate-right">
+          <div class="benefit-icon">📈</div>
+          <h3 class="benefit-card-title">Scale Your Business</h3>
+          <p class="benefit-card-desc">Flexible, scalable solutions that grow with your business. Handle 10x more customers without proportional cost increases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Section -->
+  <section class="roi-section">
+    <div class="roi-container">
+      <div class="roi-content">
+        <h2 class="roi-title animate-on-scroll">Proven ROI in 90 Days</h2>
+        <div class="roi-underline animate-on-scroll"></div>
+        <p class="roi-subtitle animate-on-scroll">See measurable results quickly with our rapid implementation approach</p>
+        
+        <div class="roi-stats">
+          <div class="roi-stat animate-bounce">
+            <div class="roi-number">90%</div>
+            <div class="roi-label">Faster Time to Market</div>
+          </div>
+          <div class="roi-stat animate-bounce">
+            <div class="roi-number">3x</div>
+            <div class="roi-label">Productivity Increase</div>
+          </div>
+          <div class="roi-stat animate-bounce">
+            <div class="roi-number">$2M+</div>
+            <div class="roi-label">Average Client Savings</div>
+          </div>
+        </div>
+        
+        <a href="prototype-services.html" class="roi-cta animate-scale">See Our Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories Section -->
+  <section class="success-section">
+    <div class="success-container">
+      <h2 class="success-title animate-on-scroll">Success Stories</h2>
+      <div class="success-underline animate-on-scroll"></div>
+      <p class="success-subtitle animate-on-scroll">Real results from real clients</p>
+      
+      <div class="success-slider">
+        <div class="success-slide active">
+          <div class="success-grid">
+            <div class="success-card">
+              <div class="success-quote">"Professional I.T Solution transformed our entire operation. We saw a 50% increase in efficiency and 35% reduction in costs within 6 months."</div>
+              <div class="success-author">
+                <div class="success-author-name">Maria Santos</div>
+                <div class="success-author-title">CEO, TechStart Philippines</div>
+              </div>
+            </div>
+            
+            <div class="success-card">
+              <div class="success-quote">"Their expertise in digital transformation helped us expand to 3 new markets in just 12 months. ROI was achieved in 4 months."</div>
+              <div class="success-author">
+                <div class="success-author-name">John Dela Cruz</div>
+                <div class="success-author-title">CTO, Global Solutions Inc.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="success-slide">
+          <div class="success-grid">
+            <div class="success-card">
+              <div class="success-quote">"The automation solutions they implemented saved us over $500K annually. Their team is incredibly professional and responsive."</div>
+              <div class="success-author">
+                <div class="success-author-name">Sarah Johnson</div>
+                <div class="success-author-title">Operations Director, InnovateCorp</div>
+              </div>
+            </div>
+            
+            <div class="success-card">
+              <div class="success-quote">"We increased our customer satisfaction score from 78% to 94% after implementing their customer service platform. Outstanding results!"</div>
+              <div class="success-author">
+                <div class="success-author-name">Michael Chen</div>
+                <div class="success-author-title">VP Customer Experience, ServiceFirst</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="success-slide">
+          <div class="success-grid">
+            <div class="success-card">
+              <div class="success-quote">"Their cloud migration strategy was flawless. We reduced our IT infrastructure costs by 40% while improving performance."</div>
+              <div class="success-author">
+                <div class="success-author-name">Lisa Rodriguez</div>
+                <div class="success-author-title">IT Director, CloudTech Solutions</div>
+              </div>
+            </div>
+            
+            <div class="success-card">
+              <div class="success-quote">"The data analytics platform they built for us revealed insights that increased our revenue by 25% in the first quarter."</div>
+              <div class="success-author">
+                <div class="success-author-name">David Kim</div>
+                <div class="success-author-title">Chief Data Officer, AnalyticsPro</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="success-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title animate-on-scroll">Ready to Transform Your Business?</h2>
+      <p class="cta-subtitle animate-on-scroll">Join 500+ companies that trust us with their digital transformation</p>
+      <div class="cta-buttons">
+        <a href="prototype-contact.html" class="cta-primary animate-left">Get Free Consultation</a>
+        <a href="prototype-services.html" class="cta-secondary animate-right">View Our Services</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="site-footer">
+    Professionals I.T Solutions, Inc. © 2025 All rights reserved. | <a href="privacy-policy.html" class="footer-link">Privacy Notice</a>.
+  </footer>
+  
+  <div class="cookies-popup" id="cookies-popup">
+    <div class="cookies-card">
+      <div class="cookies-text">This website uses cookies to ensure you get the best experience. <a href="privacy-policy.html" class="footer-link">Learn more</a>.</div>
+      <div class="cookies-btn-row">
+        <button class="cookies-allow-btn" id="cookies-allow-btn">Allow Cookies</button>
+        <button class="cookies-reject-btn" id="cookies-reject-btn">Reject Cookies</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Hero carousel logic
+    const heroSlides = [
+      {
+        title: 'DEDICATED ADVANCED TEAM',
+        desc: 'Our collective insight and best practices guarantee high impact business results each time you partner with us.',
+        learnmore: 0
+      },
+      {
+        title: 'WE ARE A SERVICE SOLUTION COMPANY',
+        desc: 'We offer our clients customized service solutions to meet project based consulting needs.',
+        learnmore: 1
+      },
+      {
+        title: 'WE DO THINGS DIFFERENTLY',
+        desc: 'We are a one-stop business solution provider that caters both to IT Services and IT Enabled Back Office Services project based needs.',
+        learnmore: 2
+      }
+    ];
+    let heroIndex = 0;
+    
+    function updateHero() {
+      // Update text content
+      document.getElementById('hero-title').textContent = heroSlides[heroIndex].title;
+      document.getElementById('hero-desc').textContent = heroSlides[heroIndex].desc;
+      
+      // Update background images
+      const bgSlides = document.querySelectorAll('.hero-bg-placeholder');
+      bgSlides.forEach((slide, index) => {
+        if (index === heroIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+      
+      // Update learn more buttons
+      for (let i = 0; i < 3; i++) {
+        document.getElementById('hero-learnmore-' + i).style.display = (i === heroSlides[heroIndex].learnmore) ? '' : 'none';
+      }
+    }
+    
+    // Auto-advance every 5 seconds
+    setInterval(() => {
+      heroIndex = (heroIndex + 1) % heroSlides.length;
+      updateHero();
+    }, 5000);
+    
+    // Mobile menu functionality
+    function setupMobileMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!hamburger || !mobileMenu) return;
+      hamburger.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+      // Optional: Close on outside click or ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Initialize mobile menu
+    setupMobileMenu();
+
+    // Success Stories Slideshow
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.success-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlides() {
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Show current slide
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('active');
+    }
+
+    function currentSlide(n) {
+      slideIndex = n - 1;
+      showSlides();
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlides();
+    }
+
+    // Auto-advance slides every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Scroll Animation
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.animate-on-scroll, .animate-left, .animate-right, .animate-scale, .animate-bounce');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('animated');
+        }
+      });
+    }
+
+    // Run animation on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Run once on page load
+    animateOnScroll();
+
+    // Cookies popup logic
+    function setupCookiesPopup() {
+      const popup = document.getElementById('cookies-popup');
+      const allowBtn = document.getElementById('cookies-allow-btn');
+      const rejectBtn = document.getElementById('cookies-reject-btn');
+      if (!popup || !allowBtn || !rejectBtn) return;
+      if (localStorage.getItem('cookiesAllowed') === 'true' || localStorage.getItem('cookiesAllowed') === 'false') {
+        popup.style.display = 'none';
+        return;
+      }
+      allowBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAllowed', 'true');
+        popup.style.display = 'none';
+      });
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAllowed', 'false');
+        popup.style.display = 'none';
+      });
+    }
+
+    // Initialize cookies popup
+    setupCookiesPopup();
+  </script>
+</body>
+</html> 

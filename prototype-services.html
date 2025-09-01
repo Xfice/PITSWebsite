@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional I.T Solution - Our Services</title>
+  <style>
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fff;
+    }
+    .floating-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 2rem;
+    }
+    .logo {
+      height: 38px;
+      width: auto;
+      display: block;
+      margin-right: 1.2rem;
+      vertical-align: middle;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links li a:hover, .nav-links li a:focus {
+      background: #f9c846;
+      color: #222;
+    }
+    .section {
+      width: 100%;
+      min-height: 40vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 0 0.5rem 0;
+      box-sizing: border-box;
+      background: #fff;
+    }
+    #services { background: #f6f7fa; }
+    .services-title {
+      font-size: 4rem;
+      color: #05607B;
+      font-weight: 800;
+      text-align: center;
+      margin-top: 0.2rem;
+      margin-bottom: 0.1rem;
+      letter-spacing: 1px;
+    }
+    .services-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 0.3rem auto;
+      border-radius: 2px;
+    }
+    .services-sub {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #444;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-divider {
+      width: 100%;
+      max-width: 900px;
+      height: 0;
+      border: none;
+      border-top: 2.5px solid #e0e0e0;
+      margin: 1.5rem auto 1.5rem auto;
+      opacity: 0.85;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
+    /* New alternating service sections */
+    .service-section {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+      min-height: 550px;
+      margin: 0;
+      padding: 0 0 0 0;
+      box-sizing: border-box;
+      background: #fff;
+    }
+    .service-section:nth-child(even) {
+      background: #f6f7fa;
+    }
+    .service-section:nth-child(odd) {
+      background: #fff;
+    }
+    .service-content {
+      flex: 0 1 calc(50% - 6px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1.5rem 0.8rem 1.5rem 1.5vw;
+      box-sizing: border-box;
+      border: 3px solid #f7b70b;
+      border-radius: 8px;
+      margin: 3px;
+      overflow: hidden;
+      max-width: calc(50% - 6px);
+      position: relative;
+      background: #fff;
+    }
+    .service-section:nth-child(odd) .service-content {
+      order: 2;
+      padding: 1.5rem 1.5vw 1.5rem 0.8rem;
+      border: 3px solid #f7b70b;
+      border-radius: 8px;
+      margin: 3px;
+      overflow: hidden;
+      max-width: calc(50% - 6px);
+      position: relative;
+      background: #fff;
+    }
+    .service-section:nth-child(even) .service-content {
+      order: 1;
+      padding: 1.5rem 0.8rem 1.5rem 1.5vw;
+      border: 3px solid #f7b70b;
+      border-radius: 8px;
+      margin: 3px;
+      overflow: hidden;
+      max-width: calc(50% - 6px);
+      position: relative;
+      background: #fff;
+    }
+    .service-title {
+      font-size: 2.4rem;
+      color: #05607B;
+      margin-bottom: 0.8rem;
+      margin-top: 0;
+      letter-spacing: 0.5px;
+      font-weight: 800;
+    }
+    .service-description {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 0;
+      margin-top: 0;
+      line-height: 1.4;
+    }
+    .service-image-container {
+      flex: 1 1 50%;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      min-width: 0;
+      min-height: 0;
+      overflow: visible;
+      padding: 3px;
+    }
+    .service-section:nth-child(odd) .service-image-container {
+      order: 1;
+    }
+    .service-section:nth-child(even) .service-image-container {
+      order: 2;
+    }
+    .service-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: none;
+      border-radius: 12px;
+    }
+    .service-section:nth-child(odd) .service-image {
+      transform: translateX(-80px);
+    }
+    .service-section:nth-child(even) .service-image {
+      transform: translateX(80px);
+    }
+    .service-section:nth-child(odd) .service-image.in-view {
+      animation: slideInLeft 1.2s cubic-bezier(.4,2,.6,1) forwards;
+    }
+    .service-section:nth-child(even) .service-image.in-view {
+      animation: slideInRight 1.2s cubic-bezier(.4,2,.6,1) forwards;
+    }
+    .service-content.in-view {
+      animation: slideInUp 1.2s cubic-bezier(.4,2,.6,1) forwards;
+    }
+    .service-section:nth-child(even) .service-content.in-view {
+      animation: slideInUp 1.2s cubic-bezier(.4,2,.6,1) forwards;
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-80px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(80px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(80px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .site-footer {
+      width: 100%;
+      background: #fff;
+      color: #222;
+      font-size: 1rem;
+      text-align: center;
+      padding: 0.7rem 0 0.7rem 0;
+      border-top: 1.5px solid #eee;
+      letter-spacing: 0.2px;
+      z-index: 10;
+    }
+    .footer-link {
+      color: #05607B;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .cookies-popup {
+      position: fixed;
+      bottom: 2.2rem;
+      right: 2.2rem;
+      z-index: 1000;
+      display: flex;
+      align-items: flex-end;
+    }
+    .cookies-card {
+      background: #fff;
+      border: 2.5px solid #05607B;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 1.3rem 2.2rem 1.3rem 1.5rem;
+      min-width: 270px;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+      font-size: 1.05rem;
+      color: #222;
+    }
+    .cookies-text {
+      margin-bottom: 0.5rem;
+      color: #222;
+      font-size: 1.05rem;
+    }
+    .cookies-btn-row {
+      display: flex;
+      gap: 1rem;
+    }
+    .cookies-allow-btn, .cookies-reject-btn {
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .cookies-allow-btn {
+      background: #f7b70b;
+      color: #222;
+    }
+    .cookies-allow-btn:hover, .cookies-allow-btn:focus {
+      background: #ffd700;
+    }
+    .cookies-reject-btn {
+      background: #eee;
+      color: #05607B;
+    }
+    .cookies-reject-btn:hover, .cookies-reject-btn:focus {
+      background: #05607B;
+      color: #fff;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 38px;
+      height: 38px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1201;
+    }
+    .hamburger-bar {
+      width: 26px;
+      height: 3.5px;
+      background: #05607B;
+      margin: 3.5px 0;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+    }
+    .mobile-menu-overlay {
+      position: absolute;
+      top: 60px;
+      right: 1.2rem;
+      left: auto;
+      width: 210px;
+      height: auto;
+      background: #fff;
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: opacity 0.35s cubic-bezier(.4,2,.6,1), transform 0.35s cubic-bezier(.4,2,.6,1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 1.2rem 0.5rem;
+    }
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .mobile-nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 0.5rem;
+    }
+    .mobile-nav-links li {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .mobile-nav-links li a {
+      color: #05607B;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+      padding: 0.2rem 0.5rem;
+      margin: 0;
+      border-radius: 6px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .mobile-nav-links li a:hover, .mobile-nav-links li a:focus {
+      color: #f7b70b;
+      background: #f6f7fa;
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .service-section {
+        flex-direction: column;
+        min-height: 0;
+      }
+      .service-content, .service-image-container {
+        flex: 1 1 100%;
+        padding: 2rem 1rem;
+        min-width: 0;
+        min-height: 0;
+        order: unset !important;
+      }
+      .service-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transform: translateY(80px) !important;
+      }
+      .service-image.in-view {
+        animation: slideInUp 1.2s cubic-bezier(.4,2,.6,1) forwards !important;
+      }
+      .service-title {
+        font-size: 2.6rem;
+      }
+      .service-description {
+        font-size: 1.3rem;
+      }
+    }
+    @media (min-width: 901px) {
+      .mobile-menu-overlay {
+        display: none !important;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.7rem 1rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .logo {
+        font-size: 1.1rem;
+      }
+      .cookies-popup {
+        right: 0.5rem;
+        bottom: 0.5rem;
+      }
+      .cookies-card {
+        min-width: 180px;
+        max-width: 95vw;
+        padding: 1rem 0.7rem 1rem 0.7rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.7rem 1rem;
+      }
+      .logo-link {
+        margin-right: auto;
+      }
+      .hamburger {
+        margin-left: auto;
+      }
+      .section {
+        min-height: 60vh;
+        padding-bottom: 2rem;
+      }
+      .service-content {
+        padding: 1.5rem 1rem;
+      }
+      .service-title {
+        font-size: 2.2rem;
+      }
+      .service-description {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Analytics Section Styles */
+    .analytics-section {
+      background: linear-gradient(135deg, #05607B 0%, #0a8bb3 100%);
+      padding: 4rem 0;
+      color: #fff;
+    }
+    
+    .analytics-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .analytics-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .analytics-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+    
+    .analytics-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .analytics-card {
+      background: rgba(255,255,255,0.1);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .analytics-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .analytics-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .analytics-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #f7b70b;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .analytics-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    
+    .analytics-desc {
+      font-size: 1rem;
+      color: #ffffff;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* Charts Section Styles */
+    .charts-section {
+      background: #f6f7fa;
+      padding: 4rem 0;
+    }
+    
+    .charts-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .charts-title {
+      font-size: 3rem;
+      color: #05607B;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .charts-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+    
+    .charts-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+    
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .chart-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+    
+    .chart-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-color: #f7b70b;
+    }
+    
+    .chart-card h3 {
+      font-size: 1.5rem;
+      color: #05607B;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .chart-container {
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    
+    .chart-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #f7b70b;
+      margin-bottom: 0.3rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Benefits Section Styles */
+    .benefits-section {
+      background: #fff;
+      padding: 4rem 0;
+    }
+    
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .benefits-title {
+      font-size: 3rem;
+      color: #05607B;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .benefits-underline {
+      width: 80px;
+      height: 4px;
+      background: #f7b70b;
+      margin: 0 auto 1rem;
+      border-radius: 2px;
+    }
+    
+    .benefits-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+
+    
+    .benefit-item {
+      background: #f6f7fa;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      border-left: 4px solid #f7b70b;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+    }
+    
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-item h3 {
+      font-size: 1.4rem;
+      color: #05607B;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-item p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .benefit-metric {
+      background: #05607B;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .metric-number {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #f7b70b;
+      margin-bottom: 0.3rem;
+    }
+    
+    .metric-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* CTA Section Styles */
+    .cta-section {
+      background: linear-gradient(135deg, #f9c846 0%, #fad675 100%);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .cta-title {
+      font-size: 3rem;
+      color: #222;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .cta-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cta-primary {
+      background: #05607B;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-primary:hover {
+      background: #0a8bb3;
+      transform: translateY(-2px);
+    }
+    
+    .cta-secondary {
+      background: transparent;
+      color: #05607B;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid #05607B;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-secondary:hover {
+      background: #05607B;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design for new sections */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: row;
+        gap: 0;
+        padding: 0 1rem;
+        justify-content: space-between;
+      }
+      
+      .analytics-title, .charts-title, .benefits-title, .cta-title {
+        font-size: 2.2rem;
+      }
+      
+      .analytics-grid, .charts-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta-primary, .cta-secondary {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      
+      .chart-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="floating-navbar">
+      <div class="nav-container">
+        <a href="prototype-home.html" class="logo-link"><img src="assets/logo.png" alt="Professional I.T Solution Logo" class="logo"></a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="prototype-about.html">About</a></li>
+          <li><a href="prototype-services.html">Service</a></li>
+          <li><a href="prototype-team.html">Team</a></li>
+          <li><a href="prototype-contact.html">Contact</a></li>
+          <li><a href="prototype-join.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="prototype-about.html">About</a></li>
+          <li><a href="prototype-services.html">Service</a></li>
+          <li><a href="prototype-team.html">Team</a></li>
+          <li><a href="prototype-contact.html">Contact</a></li>
+          <li><a href="prototype-join.html">Join Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="section" id="services">
+      <h2 class="services-title">OUR SOLUTIONS</h2>
+      <div class="services-underline"></div>
+      <div class="services-sub">Some of the things we can do for you...</div>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <!-- IT Services Section -->
+    <div class="service-section">
+      <div class="service-content">
+        <h2 class="service-title">IT Services</h2>
+        <p class="service-description">Our IT professionals are proficient in the development of customized softwares that suits your business needs, either desktop or web-based / mobile applications.</p>
+      </div>
+      <div class="service-image-container">
+        <img src="assets/service-1.jpg" alt="IT Services" class="service-image" />
+      </div>
+    </div>
+    
+    <!-- IT Enabled Back Office Services Section -->
+    <div class="service-section">
+      <div class="service-content">
+        <h2 class="service-title">IT Enabled Back Office Services</h2>
+        <p class="service-description">Our pool of seasoned professionals is ready to support your administrative business requirements.</p>
+      </div>
+      <div class="service-image-container">
+        <img src="assets/backoffice.jpg" alt="IT Enabled Back Office Services" class="service-image" />
+      </div>
+    </div>
+    
+    <!-- Client Account Management Section -->
+    <div class="service-section">
+      <div class="service-content">
+        <h2 class="service-title">Client Account Management</h2>
+        <p class="service-description">Our team of marketing experts will work with you to develop strategies tailored to your business. A plan will be created to match your desired output that we will revisit, refine and, execute throughout our partnership.</p>
+      </div>
+      <div class="service-image-container">
+        <img src="assets/service.jpg" alt="Client Account Management" class="service-image" />
+      </div>
+    </div>
+
+    <!-- Business Impact Analytics Section -->
+    <div class="analytics-section">
+      <div class="analytics-container">
+        <h2 class="analytics-title">Business Impact & Results</h2>
+        <div class="analytics-underline"></div>
+        <p class="analytics-subtitle">Measurable outcomes from our IT solutions</p>
+        
+        <div class="analytics-grid">
+          <div class="analytics-card">
+            <div class="analytics-icon">📈</div>
+            <div class="analytics-number" data-target="85">0</div>
+            <div class="analytics-label">% Increase in Efficiency</div>
+            <div class="analytics-desc">Average improvement in operational efficiency across all IT service implementations</div>
+          </div>
+          
+          <div class="analytics-card">
+            <div class="analytics-icon">💰</div>
+            <div class="analytics-number" data-target="60">0</div>
+            <div class="analytics-label">% Cost Reduction</div>
+            <div class="analytics-desc">Average cost savings achieved through our IT optimization solutions</div>
+          </div>
+          
+          <div class="analytics-card">
+            <div class="analytics-icon">⚡</div>
+            <div class="analytics-number" data-target="90">0</div>
+            <div class="analytics-label">% Faster Deployment</div>
+            <div class="analytics-desc">Reduced time-to-market for custom software development projects</div>
+          </div>
+          
+          <div class="analytics-card">
+            <div class="analytics-icon">🎯</div>
+            <div class="analytics-number" data-target="95">0</div>
+            <div class="analytics-label">% Client Satisfaction</div>
+            <div class="analytics-desc">Client satisfaction rate based on post-project feedback surveys</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Performance Charts Section -->
+    <div class="charts-section">
+      <div class="charts-container">
+        <h2 class="charts-title">Performance Analytics</h2>
+        <div class="charts-underline"></div>
+        <p class="charts-subtitle">Visual representation of our service outcomes</p>
+        
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>IT Services ROI</h3>
+            <div class="chart-container">
+              <canvas id="roiChart" width="300" height="200"></canvas>
+            </div>
+            <div class="chart-stats">
+              <div class="stat-item">
+                <span class="stat-number">3.2x</span>
+                <span class="stat-label">Average ROI</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Months Payback</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="chart-card">
+            <h3>Back Office Efficiency</h3>
+            <div class="chart-container">
+              <canvas id="efficiencyChart" width="300" height="200"></canvas>
+            </div>
+            <div class="chart-stats">
+              <div class="stat-item">
+                <span class="stat-number">75%</span>
+                <span class="stat-label">Time Saved</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">40%</span>
+                <span class="stat-label">Error Reduction</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="chart-card">
+            <h3>Client Success Metrics</h3>
+            <div class="chart-container">
+              <canvas id="successChart" width="300" height="200"></canvas>
+            </div>
+            <div class="chart-stats">
+              <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Project Success</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">85%</span>
+                <span class="stat-label">Client Retention</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Benefits Section -->
+    <div class="benefits-section">
+      <div class="benefits-container">
+        <h2 class="benefits-title">Why Choose Our Services?</h2>
+        <div class="benefits-underline"></div>
+        <p class="benefits-subtitle">Comprehensive benefits that drive business growth</p>
+        
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-icon">🚀</div>
+            <h3>Scalable Solutions</h3>
+            <p>Our IT services grow with your business, ensuring long-term value and adaptability to changing needs.</p>
+            <div class="benefit-metric">
+              <span class="metric-number">10x</span>
+              <span class="metric-label">Scalability Factor</span>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">🛡️</div>
+            <h3>Enterprise Security</h3>
+            <p>Bank-level security protocols protect your data and ensure compliance with industry standards.</p>
+            <div class="benefit-metric">
+              <span class="metric-number">99.9%</span>
+              <span class="metric-label">Uptime Guarantee</span>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">⚡</div>
+            <h3>Rapid Implementation</h3>
+            <p>Quick deployment and integration with existing systems to minimize disruption to your operations.</p>
+            <div class="benefit-metric">
+              <span class="metric-number">50%</span>
+              <span class="metric-label">Faster Deployment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="cta-section">
+      <div class="cta-container">
+        <h2 class="cta-title">Ready to Transform Your Business?</h2>
+        <p class="cta-subtitle">Join hundreds of companies that have achieved remarkable results with our IT solutions</p>
+        <div class="cta-buttons">
+          <a href="prototype-contact.html" class="cta-primary">Get Free Consultation</a>
+          <a href="prototype-about.html" class="cta-secondary">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    Professionals I.T Solutions, Inc. © 2025 All rights reserved. | <a href="privacy-policy.html" class="footer-link">Privacy Notice</a>.
+  </footer>
+  <div class="cookies-popup" id="cookies-popup">
+    <div class="cookies-card">
+      <div class="cookies-text">This website uses cookies to ensure you get the best experience. <a href="#" class="footer-link">Learn more</a>.</div>
+      <div class="cookies-btn-row">
+        <button class="cookies-allow-btn" id="cookies-allow-btn">Allow Cookies</button>
+        <button class="cookies-reject-btn" id="cookies-reject-btn">Reject Cookies</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Animation for service sections on scroll
+    function animateServiceSectionsOnScroll() {
+      const sections = document.querySelectorAll('.service-section');
+      if (!sections.length) return;
+      
+      if (!('IntersectionObserver' in window)) {
+        sections.forEach(section => {
+          const image = section.querySelector('.service-image');
+          const content = section.querySelector('.service-content');
+          if (image) image.classList.add('in-view');
+          if (content) content.classList.add('in-view');
+        });
+        return;
+      }
+      
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const image = entry.target.querySelector('.service-image');
+            const content = entry.target.querySelector('.service-content');
+            if (image) image.classList.add('in-view');
+            if (content) content.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      sections.forEach(section => {
+        const image = section.querySelector('.service-image');
+        const content = section.querySelector('.service-content');
+        if (image) image.classList.remove('in-view');
+        if (content) content.classList.remove('in-view');
+        observer.observe(section);
+      });
+    }
+
+    // Cookies popup logic
+    function setupCookiesPopup() {
+      const popup = document.getElementById('cookies-popup');
+      const allowBtn = document.getElementById('cookies-allow-btn');
+      const rejectBtn = document.getElementById('cookies-reject-btn');
+      if (!popup || !allowBtn || !rejectBtn) return;
+      if (localStorage.getItem('cookiesAllowed') === 'true' || localStorage.getItem('cookiesAllowed') === 'false') {
+        popup.style.display = 'none';
+        return;
+      }
+      allowBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAllowed', 'true');
+        popup.style.display = 'none';
+      });
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAllowed', 'false');
+        popup.style.display = 'none';
+      });
+    }
+
+    function setupMobileMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!hamburger || !mobileMenu) return;
+      hamburger.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+      // Optional: Close on outside click or ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function setupAnchorOffsetScroll() {
+      const navbarHeight = document.querySelector('.floating-navbar')?.offsetHeight || 70;
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#') && href.length > 1) {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const rect = target.getBoundingClientRect();
+              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+              const offset = rect.top + scrollTop - navbarHeight;
+              window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    }
+
+    // Animated counter function
+    function animateCounter(element, target, duration = 2000) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      
+      function updateCounter() {
+        start += increment;
+        if (start < target) {
+          element.textContent = Math.floor(start);
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = target;
+        }
+      }
+      updateCounter();
+    }
+
+    // Animate counters when in view
+    function animateCountersOnScroll() {
+      const counters = document.querySelectorAll('.analytics-number');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            animateCounter(entry.target, target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    }
+
+    // Simple chart drawing function
+    function drawCharts() {
+      // ROI Chart
+      const roiCanvas = document.getElementById('roiChart');
+      if (roiCanvas) {
+        const ctx = roiCanvas.getContext('2d');
+        ctx.fillStyle = '#f7b70b';
+        ctx.fillRect(50, 150, 200, 50);
+        ctx.fillStyle = '#05607B';
+        ctx.fillRect(50, 100, 200, 50);
+        ctx.fillStyle = '#0a8bb3';
+        ctx.fillRect(50, 50, 200, 50);
+        
+        // Add labels
+        ctx.fillStyle = '#333';
+        ctx.font = '12px Arial';
+        ctx.fillText('Year 1', 10, 175);
+        ctx.fillText('Year 2', 10, 125);
+        ctx.fillText('Year 3', 10, 75);
+      }
+
+      // Efficiency Chart
+      const efficiencyCanvas = document.getElementById('efficiencyChart');
+      if (efficiencyCanvas) {
+        const ctx = efficiencyCanvas.getContext('2d');
+        ctx.fillStyle = '#f7b70b';
+        ctx.beginPath();
+        ctx.arc(150, 100, 60, 0, 2 * Math.PI * 0.75);
+        ctx.fill();
+        ctx.fillStyle = '#05607B';
+        ctx.beginPath();
+        ctx.arc(150, 100, 60, 2 * Math.PI * 0.75, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      // Success Chart
+      const successCanvas = document.getElementById('successChart');
+      if (successCanvas) {
+        const ctx = successCanvas.getContext('2d');
+        ctx.fillStyle = '#f7b70b';
+        ctx.fillRect(50, 120, 50, 80);
+        ctx.fillStyle = '#05607B';
+        ctx.fillRect(120, 80, 50, 120);
+        ctx.fillStyle = '#0a8bb3';
+        ctx.fillRect(190, 60, 50, 140);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize all functions
+      animateServiceSectionsOnScroll();
+      setupCookiesPopup();
+      setupMobileMenu();
+      setupAnchorOffsetScroll();
+      animateCountersOnScroll();
+      drawCharts();
+    });
+  </script>
+</body>
+</html> 

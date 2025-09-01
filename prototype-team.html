@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional I.T Solution - Our Team</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+         /* Team avatar styles */
+     .team-avatar {
+       width: 120px;
+       height: 120px;
+       border-radius: 50%;
+       background: #05607B;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-size: 3rem;
+       margin: 0 auto 1rem;
+       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+     }
+
+    /* IT Team Section Styles */
+    .it-team-section {
+      background: #f6f7fa;
+      padding: 4rem 0;
+    }
+
+    .it-team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .it-team-title {
+      font-size: 3rem;
+      color: #05607B;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .it-team-subtitle {
+      font-size: 1.3rem;
+      color: #444;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+
+    .it-team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .it-role-card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2px solid #e0e0e0;
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+
+    .it-role-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-color: #f7b70b;
+    }
+
+    .role-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .role-title {
+      font-size: 1.5rem;
+      color: #05607B;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .role-description {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .role-skills {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .role-skills li {
+      padding: 0.5rem 0;
+      color: #666;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .role-skills li:before {
+      content: "✓";
+      color: #f7b70b;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+         /* Team Values Section */
+     .team-values-section {
+       background: linear-gradient(135deg, #f9c846 0%, #fad675 100%);
+       padding: 4rem 0;
+       text-align: center;
+     }
+
+    .team-values-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+         .team-values-title {
+       font-size: 3rem;
+       color: #222;
+       font-weight: 800;
+       margin-bottom: 1rem;
+       letter-spacing: 1px;
+     }
+
+    .team-values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+         .team-value-card {
+       background: rgba(255,255,255,0.9);
+       padding: 2rem;
+       border-radius: 12px;
+       backdrop-filter: blur(10px);
+       border: 1px solid rgba(255,255,255,0.3);
+       transition: all 0.3s ease;
+     }
+
+     .team-value-card:hover {
+       transform: translateY(-3px);
+       background: rgba(255,255,255,1);
+     }
+
+    .team-value-card .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+         .team-value-card h3 {
+       font-size: 1.3rem;
+       font-weight: 700;
+       margin-bottom: 1rem;
+       color: #222;
+     }
+
+         .team-value-card p {
+       font-size: 1rem;
+       line-height: 1.6;
+       color: #444;
+     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .it-team-title, .team-values-title {
+        font-size: 2.2rem;
+      }
+      
+      .it-team-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .team-values-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .it-role-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="floating-navbar">
+      <div class="nav-container">
+        <a href="prototype-home.html" class="logo-link"><img src="assets/logo.png" alt="Professional I.T Solution Logo" class="logo"></a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="prototype-about.html">About</a></li>
+          <li><a href="prototype-services.html">Service</a></li>
+          <li><a href="prototype-team.html">Team</a></li>
+          <li><a href="prototype-contact.html">Contact</a></li>
+          <li><a href="prototype-join.html">Join Us</a></li>
+        </ul>
+      </div>
+      <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="prototype-about.html">About</a></li>
+          <li><a href="prototype-services.html">Service</a></li>
+          <li><a href="prototype-team.html">Team</a></li>
+          <li><a href="prototype-contact.html">Contact</a></li>
+          <li><a href="prototype-join.html">Join Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="team-section" id="team">
+      <div class="team-section-content">
+        <h1 class="team-quote">"Together we will build strategies, build confidence, and ultimately build your business"</h1>
+        <div class="team-sub">TELL US WHAT YOU NEED.</div>
+        <div class="team-members-row">
+                     <div class="team-member">
+             <img src="assets/dfm.png" alt="Dairyl Ian Mendoza" class="team-img" />
+             <div class="team-email">dmendoza@pitsph.com</div>
+             <div class="team-role">General Business Manager</div>
+             <div class="team-name">Dairyl Ian Mendoza</div>
+           </div>
+           <div class="team-member">
+             <img src="assets/about-img7.jpg" alt="Sixto Gonzaga" class="team-img" />
+             <div class="team-email">sgonzaga@pitsph.com</div>
+             <div class="team-role">Finance and Accounting</div>
+             <div class="team-name">Sixto Gonzaga</div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IT Team Roles Section -->
+    <section class="it-team-section">
+      <div class="it-team-container">
+        <h2 class="it-team-title">Our IT Team Composition</h2>
+        <p class="it-team-subtitle">Comprehensive expertise across all technology domains</p>
+        
+        <div class="it-team-grid">
+          <div class="it-role-card">
+            <div class="role-icon">🎨</div>
+            <h3 class="role-title">UI/UX Designers</h3>
+            <p class="role-description">Create intuitive and engaging user experiences through thoughtful design, user research, and interactive prototypes.</p>
+            <ul class="role-skills">
+              <li>User Interface Design</li>
+              <li>User Experience Research</li>
+              <li>Prototyping & Wireframing</li>
+              <li>Design Systems</li>
+            </ul>
+          </div>
+
+          <div class="it-role-card">
+            <div class="role-icon">💻</div>
+            <h3 class="role-title">Developers</h3>
+            <p class="role-description">Build robust and scalable applications using cutting-edge technologies and best practices.</p>
+            <ul class="role-skills">
+              <li>Full-Stack Development</li>
+              <li>Frontend & Backend</li>
+              <li>Mobile App Development</li>
+              <li>API Development</li>
+            </ul>
+          </div>
+
+          <div class="it-role-card">
+            <div class="role-icon">⚙️</div>
+            <h3 class="role-title">DevOps Engineers</h3>
+            <p class="role-description">Streamline development and operations through automation, monitoring, and infrastructure management.</p>
+            <ul class="role-skills">
+              <li>CI/CD Pipelines</li>
+              <li>Cloud Infrastructure</li>
+              <li>Container Orchestration</li>
+              <li>Monitoring & Logging</li>
+            </ul>
+          </div>
+
+          <div class="it-role-card">
+            <div class="role-icon">📋</div>
+            <h3 class="role-title">Business/System Analysts</h3>
+            <p class="role-description">Bridge business needs with technical solutions through analysis, documentation, and process optimization.</p>
+            <ul class="role-skills">
+              <li>Requirements Gathering</li>
+              <li>Process Analysis</li>
+              <li>System Design</li>
+              <li>Stakeholder Management</li>
+            </ul>
+          </div>
+
+          <div class="it-role-card">
+            <div class="role-icon">🔍</div>
+            <h3 class="role-title">QA Engineers</h3>
+            <p class="role-description">Ensure software quality through comprehensive testing strategies and quality assurance processes.</p>
+            <ul class="role-skills">
+              <li>Test Automation</li>
+              <li>Manual Testing</li>
+              <li>Performance Testing</li>
+              <li>Quality Assurance</li>
+            </ul>
+          </div>
+
+          <div class="it-role-card">
+            <div class="role-icon">📈</div>
+            <h3 class="role-title">Project Managers</h3>
+            <p class="role-description">Lead successful project delivery through planning, coordination, and stakeholder management.</p>
+            <ul class="role-skills">
+              <li>Project Planning</li>
+              <li>Team Leadership</li>
+              <li>Risk Management</li>
+              <li>Agile Methodologies</li>
+            </ul>
+          </div>
+
+          <div class="it-role-card">
+            <div class="role-icon">🏢</div>
+            <h3 class="role-title">Back Office Specialists</h3>
+            <p class="role-description">Support business operations through administrative and operational excellence.</p>
+            <ul class="role-skills">
+              <li>Process Optimization</li>
+              <li>Data Management</li>
+              <li>Administrative Support</li>
+              <li>Operational Efficiency</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Values Section -->
+    <section class="team-values-section">
+      <div class="team-values-container">
+        <h2 class="team-values-title">What Makes Our Team Special</h2>
+        <div class="team-values-grid">
+          <div class="team-value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Collaboration</h3>
+            <p>We work together seamlessly across disciplines to deliver exceptional results.</p>
+          </div>
+          <div class="team-value-card">
+            <div class="value-icon">🚀</div>
+            <h3>Innovation</h3>
+            <p>We stay ahead of technology trends and embrace new solutions.</p>
+          </div>
+          <div class="team-value-card">
+            <div class="value-icon">🎯</div>
+            <h3>Excellence</h3>
+            <p>We maintain high standards in every project and deliver quality outcomes.</p>
+          </div>
+          <div class="team-value-card">
+            <div class="value-icon">📚</div>
+            <h3>Continuous Learning</h3>
+            <p>We invest in ongoing education and skill development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    Professionals I.T Solutions, Inc. © 2025 All rights reserved. | <a href="privacy-policy.html" class="footer-link">Privacy Notice</a>.
+  </footer>
+  <div class="cookies-popup" id="cookies-popup">
+    <div class="cookies-card">
+      <div class="cookies-text">This website uses cookies to ensure you get the best experience. <a href="privacy-policy.html" class="footer-link">Learn more</a>.</div>
+      <div class="cookies-btn-row">
+        <button class="cookies-allow-btn" id="cookies-allow-btn">Allow Cookies</button>
+        <button class="cookies-reject-btn" id="cookies-reject-btn">Reject Cookies</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Cookies popup logic
+    function setupCookiesPopup() {
+      const popup = document.getElementById('cookies-popup');
+      const allowBtn = document.getElementById('cookies-allow-btn');
+      const rejectBtn = document.getElementById('cookies-reject-btn');
+      if (!popup || !allowBtn || !rejectBtn) return;
+      if (localStorage.getItem('cookiesAllowed') === 'true' || localStorage.getItem('cookiesAllowed') === 'false') {
+        popup.style.display = 'none';
+        return;
+      }
+      allowBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAllowed', 'true');
+        popup.style.display = 'none';
+      });
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAllowed', 'false');
+        popup.style.display = 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setupCookiesPopup();
+      // The setupMobileMenu function is called automatically by script.js
+    });
+  </script>
+</body>
+</html> 
