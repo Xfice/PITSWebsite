@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 html, body {
   width: 100%;
   max-width: 100vw;
@@ -5,7 +7,7 @@ html, body {
 }
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   background: #fff;
 }
 .floating-navbar {
@@ -45,7 +47,7 @@ body {
   padding: 0;
 }
 .nav-links li a {
-  color: #222;
+  color: #05607B;
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
@@ -55,7 +57,7 @@ body {
 }
 .nav-links li a:hover, .nav-links li a:focus {
   background: #f9c846;
-  color: #222;
+  color: #05607B;
 }
 .section {
   width: 100%;
@@ -192,7 +194,7 @@ body {
 .hero-learnmore {
   display: none;
   background: #f9c846;
-  color: #222;
+  color: #05607B;
   font-weight: bold;
   font-size: 1.1rem;
   padding: 0.7rem 2.2rem;
@@ -214,7 +216,7 @@ body {
 }
 .hero-learnmore:focus, .hero-learnmore:hover {
   background: #ffd700;
-  color: #222;
+  color: #05607B;
 }
 .hero-title-0, .hero-title-1, .hero-title-2,
 .hero-desc-0, .hero-desc-1, .hero-desc-2 {
@@ -289,7 +291,7 @@ body {
 }
 .about-section p {
   font-size: 1.15rem;
-  color: #444;
+  color: #05607B;
   max-width: 700px;
   margin: 0.5rem auto 0 auto;
 }
@@ -336,7 +338,7 @@ body {
 }
 .step p {
   font-size: 1.05rem;
-  color: #444;
+  color: #05607B;
   margin: 0;
 }
 @media (max-width: 900px) {
@@ -358,7 +360,7 @@ body {
   height: auto;
 }
 .about-highlight {
-  color: #444;
+  color: #05607B;
   font-weight: bold;
   font-size: 1.3rem;
   margin-top: 2rem;
@@ -545,7 +547,7 @@ body {
 }
 .about-split-left p {
   font-size: 1.1rem;
-  color: #444;
+  color: #05607B;
   margin-bottom: 0.7rem;
   margin-top: 0;
 }
@@ -555,7 +557,7 @@ body {
   align-self: flex-start;
   margin-top: 2.2rem;
   background: #f9c846;
-  color: #222;
+  color: #05607B;
   font-weight: bold;
   font-size: 1.1rem;
   padding: 0.7rem 2.2rem;
@@ -568,7 +570,7 @@ body {
 }
 .about-split-btn:focus, .about-split-btn:hover {
   background: #ffd700;
-  color: #222;
+  color: #05607B;
 }
 .about-split-right {
   flex: 1 1 50%;
@@ -718,6 +720,28 @@ body {
   position: relative;
   z-index: 1;
 }
+
+.team-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #05607B 0%, #0a7a9a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.team-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
 .team-email {
   position: absolute;
   top: 200px;
@@ -737,7 +761,8 @@ body {
 }
 .team-member:hover .team-email,
 .team-member:focus-within .team-email,
-.team-img:hover + .team-email {
+.team-img:hover + .team-email,
+.team-avatar:hover + .team-email {
   opacity: 1;
   pointer-events: auto;
 }
@@ -749,7 +774,7 @@ body {
   text-align: center;
 }
 .team-name {
-  color: #222;
+  color: #05607B;
   font-size: 1.15rem;
   font-weight: 600;
   text-align: center;
@@ -795,7 +820,7 @@ body {
 .services-sub {
   text-align: center;
   font-size: 1.15rem;
-  color: #444;
+  color: #05607B;
   font-weight: 500;
   margin-bottom: 2.2rem;
 } 
@@ -874,7 +899,7 @@ body {
 }
 .services-card-desc {
   font-size: 1.08rem;
-  color: #444;
+  color: #05607B;
   font-weight: 400;
   line-height: 1.5;
   margin-bottom: 0.5rem;
@@ -924,7 +949,7 @@ body {
 }
 .contact-sub {
   font-size: 1.15rem;
-  color: #444;
+  color: #05607B;
   font-weight: 500;
   margin-bottom: 2.2rem;
 }
@@ -940,7 +965,7 @@ body {
   align-items: center;
   gap: 1.1rem;
   font-size: 1.08rem;
-  color: #222;
+  color: #05607B;
   background: none;
   border: none;
   box-shadow: none;
@@ -953,7 +978,7 @@ body {
 }
 .contact-info-label {
   font-size: 1.08rem;
-  color: #222;
+  color: #05607B;
   font-weight: 500;
   text-align: left;
 }
@@ -977,7 +1002,7 @@ body {
 .site-footer {
   width: 100%;
   background: #fff;
-  color: #222;
+  color: #05607B;
   font-size: 1rem;
   text-align: center;
   padding: 0.7rem 0 0.7rem 0;
@@ -1011,11 +1036,11 @@ body {
   align-items: flex-start;
   gap: 1.1rem;
   font-size: 1.05rem;
-  color: #222;
+  color: #05607B;
 }
 .cookies-text {
   margin-bottom: 0.5rem;
-  color: #222;
+  color: #05607B;
   font-size: 1.05rem;
 }
 .cookies-btn-row {
@@ -1033,7 +1058,7 @@ body {
 }
 .cookies-allow-btn {
   background: #f7b70b;
-  color: #222;
+  color: #05607B;
 }
 .cookies-allow-btn:hover, .cookies-allow-btn:focus {
   background: #ffd700;

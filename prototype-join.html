@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join Us - Professional I.T Solution</title>
   <style>
@@ -12,7 +13,7 @@
     }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       background: #fff;
     }
     .floating-navbar {
@@ -52,7 +53,7 @@
       padding: 0;
     }
     .nav-links li a {
-      color: #222;
+      color: #05607B;
       text-decoration: none;
       font-weight: 500;
       font-size: 1rem;
@@ -62,7 +63,7 @@
     }
     .nav-links li a:hover, .nav-links li a:focus {
       background: #f9c846;
-      color: #222;
+      color: #05607B;
     }
 
     .hamburger {
@@ -191,7 +192,7 @@
     .services-sub {
       text-align: center;
       font-size: 1.15rem;
-      color: #444;
+      color: #05607B;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
@@ -217,49 +218,34 @@
        max-width: 100%;
        min-height: 550px;
        margin: 0;
-       padding: 0 0 0 0;
+       padding: 0;
        box-sizing: border-box;
        background: #fff;
+       gap: 0;
      }
     .service-section:nth-child(even) { background: #f6f7fa; }
     .service-section:nth-child(odd) { background: #fff; }
                    .service-content {
-        flex: 0 1 calc(50% - 6px);
+        flex: 1 1 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        padding: 1.5rem 0.8rem 1.5rem 1.5vw;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
         box-sizing: border-box;
         border: 3px solid #f7b70b;
         border-radius: 8px;
-        margin: 3px;
+        margin: 0;
         overflow: hidden;
-        max-width: calc(50% - 6px);
         position: relative;
         background: #fff;
       }
                                                                                                                                                                .service-section:nth-child(odd) .service-content {
          order: 2;
-         padding: 1.5rem 1.5vw 1.5rem 0.8rem;
-         border: 3px solid #f7b70b;
-         border-radius: 8px;
-         margin: 3px;
-         overflow: hidden;
-         max-width: calc(50% - 6px);
-         position: relative;
-         background: #fff;
        }
                                                                                                                                                                .service-section:nth-child(even) .service-content {
          order: 1;
-         padding: 1.5rem 0.8rem 1.5rem 1.5vw;
-         border: 3px solid #f7b70b;
-         border-radius: 8px;
-         margin: 3px;
-         overflow: hidden;
-         max-width: calc(50% - 6px);
-         position: relative;
-         background: #fff;
        }
                    .service-title {
         font-size: 2.4rem;
@@ -271,7 +257,7 @@
       }
                    .service-description {
         font-size: 1.1rem;
-        color: #444;
+        color: #05607B;
         margin-bottom: 0;
         margin-top: 0;
         line-height: 1.4;
@@ -283,8 +269,9 @@
       justify-content: center;
       min-width: 0;
       min-height: 0;
-      overflow: visible;
-      padding: 3px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
     }
     .service-section:nth-child(odd) .service-image-container { order: 1; }
     .service-section:nth-child(even) .service-image-container { order: 2; }
@@ -348,7 +335,7 @@
     .join-sub {
       text-align: center;
       font-size: 1.05rem;
-      color: #444;
+      color: #05607B;
       margin-bottom: 1.5rem;
     }
     .form-grid {
@@ -374,7 +361,7 @@
     .form-actions { display: flex; justify-content: center; margin-top: 0.8rem; }
     .submit-btn {
       background: #f9c846;
-      color: #222;
+      color: #05607B;
       font-weight: bold;
       font-size: 1.05rem;
       padding: 0.8rem 2rem;
@@ -384,7 +371,7 @@
       transition: background 0.2s;
     }
     .submit-btn:hover, .submit-btn:focus { background: #ffd700; }
-    .form-note { text-align: center; color: #666; font-size: 0.95rem; margin-top: 0.6rem; }
+    .form-note { text-align: center; color: #05607B; font-size: 0.95rem; margin-top: 0.6rem; }
     .success-banner {
       display: none;
       margin: 0.8rem auto 0 auto;
@@ -398,7 +385,7 @@
     .site-footer {
       width: 100%;
       background: #fff;
-      color: #222;
+      color: #05607B;
       font-size: 1rem;
       text-align: center;
       padding: 0.7rem 0 0.7rem 0;
@@ -429,6 +416,253 @@
       .service-title { font-size: 2.2rem; }
       .service-description { font-size: 1.2rem; }
     }
+
+    /* Enhanced Mobile Responsive Design */
+    @media (max-width: 1024px) {
+      .nav-container {
+        padding: 0.7rem 1.5rem;
+      }
+      
+      .hero-content {
+        padding: 0 1.5rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0.7rem 1rem;
+      }
+      
+      .hero-content {
+        padding: 0 1rem;
+        text-align: center;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .section {
+        padding: 2rem 1rem;
+        min-height: 50vh;
+      }
+      
+      .service-section {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 2rem 0;
+        width: 100%;
+        margin: 0;
+      }
+      
+      .service-content {
+        width: 100%;
+        padding: 2rem 1rem;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      
+      .service-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      
+      .service-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      
+      .service-image-container {
+        width: 100%;
+        padding: 0 1rem;
+        margin: 0;
+        box-sizing: border-box;
+        order: 2;
+      }
+      
+      .service-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        transform: none !important;
+      }
+      
+      .form-container {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+      
+      .form-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      
+      .form-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      
+      .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .form-input,
+      .form-textarea,
+      .form-select {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .form-textarea {
+        min-height: 120px;
+      }
+      
+      .submit-button {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container {
+        padding: 0.5rem 0.8rem;
+      }
+      
+      .logo {
+        height: 32px;
+      }
+      
+      .hero-content {
+        padding: 0 0.8rem;
+      }
+      
+      .hero-title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .cta-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      
+      .section {
+        padding: 1.5rem 0.8rem;
+        min-height: 40vh;
+      }
+      
+      .service-section {
+        padding: 1.5rem 0;
+        width: 100%;
+        margin: 0;
+      }
+      
+      .service-content {
+        padding: 1.5rem 0.8rem;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      
+      .service-title {
+        font-size: 1.5rem;
+      }
+      
+      .service-description {
+        font-size: 0.9rem;
+      }
+      
+      .service-image-container {
+        padding: 0 0.8rem;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      
+      .service-image {
+        height: 200px;
+      }
+      
+      .form-container {
+        padding: 1.2rem;
+        margin: 0.8rem;
+      }
+      
+      .form-title {
+        font-size: 1.5rem;
+      }
+      
+      .form-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .form-label {
+        font-size: 0.85rem;
+      }
+      
+      .form-input,
+      .form-textarea,
+      .form-select {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+      }
+      
+      .form-textarea {
+        min-height: 100px;
+      }
+      
+      .submit-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+      }
+    }
   </style>
   <meta name="description" content="Join Professional I.T Solution – send your details to become part of our team.">
   <meta name="keywords" content="Join Us, Careers, Apply, Professional IT Solution">
@@ -438,14 +672,14 @@
   <header>
     <nav class="floating-navbar">
       <div class="nav-container">
-        <a href="prototype-home.html" class="logo-link"><img src="assets/logo.png" alt="Professional I.T Solution Logo" class="logo"></a>
+        <a href="index.html" class="logo-link"><img src="assets/logo.png" alt="Professional I.T Solution Logo" class="logo"></a>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
         </button>
         <ul class="nav-links">
-          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="prototype-about.html">About</a></li>
           <li><a href="prototype-services.html">Service</a></li>
           <li><a href="prototype-team.html">Team</a></li>
@@ -455,7 +689,7 @@
       </div>
       <div class="mobile-menu-overlay" id="mobile-menu">
         <ul class="mobile-nav-links">
-          <li><a href="prototype-home.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="prototype-about.html">About</a></li>
           <li><a href="prototype-services.html">Service</a></li>
           <li><a href="prototype-team.html">Team</a></li>
@@ -481,7 +715,7 @@
          <p class="service-description">Collaborate with a dedicated advanced team delivering impactful solutions across web, mobile, and enterprise platforms.</p>
        </div>
        <div class="service-image-container">
-         <img src="assets/top-talent.jpg" alt="Work With Top Talent" class="service-image" />
+         <img src="assets/teamwork.jpg" alt="Work With Top Talent" class="service-image" />
        </div>
      </div>
 
